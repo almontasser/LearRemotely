@@ -34,7 +34,7 @@ public class Auth {
     }
 
     public static void logIn(HttpServletRequest req, HttpServletResponse resp, String username, String password) throws IOException {
-        List<User> users = DataAccess.selectUsers("SELECT * FROM USERS WHERE username='" + username + "' AND password='" + password + "';");
+        List<User> users = DataAccess.selectUsers("SELECT * FROM users WHERE username='" + username + "' AND password='" + password + "';");
         if (users.size() == 1) {
             User user = users.get(0);
             req.getSession().setAttribute("auth.id", user.getId());
