@@ -8,4 +8,4 @@
 
 ### Database
 
-Create a database named "learn_remotely", and then import sql file "learn_remotely.sql".
+Create a database named "learn_remotely", and then import sql in order, "01_learn_remotely.sql", then "02_add_login_trigger.sql".
