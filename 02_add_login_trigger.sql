@@ -39,6 +39,9 @@ END;
 -- Create DeleteLogs stored procedure
 CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteLogs`()
    MODIFIES SQL DATA
-DELETE FROM logs
+DELETE FROM logs;
+
+CREATE VIEW sorted_users AS SELECT * FROM users ORDER BY users.type DESC;
+
 
 COMMIT;
