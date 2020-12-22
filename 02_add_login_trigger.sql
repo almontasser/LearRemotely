@@ -36,11 +36,4 @@ BEGIN
   END IF;
 END;
 
--- Create Login stored procedure
-CREATE DEFINER=`root`@`localhost` PROCEDURE `UserLogin`(IN `user_id` INT) NOT DETERMINISTIC MODIFIES SQL DATA SQL SECURITY INVOKER UPDATE users SET users.last_login = CURRENT_TIMESTAMP() WHERE users.id=user_id
-
--- Create logout stored procedure
-CREATE DEFINER=`root`@`localhost` PROCEDURE `UserLogout`(IN `user_id` INT) NOT DETERMINISTIC MODIFIES SQL DATA SQL SECURITY INVOKER UPDATE users SET users.last_logout = CURRENT_TIMESTAMP() WHERE users.id=user_id
-
-
 COMMIT;
