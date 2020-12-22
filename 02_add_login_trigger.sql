@@ -36,4 +36,9 @@ BEGIN
   END IF;
 END;
 
+-- Create DeleteLogs stored procedure
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteLogs`()
+   MODIFIES SQL DATA
+DELETE FROM logs
+
 COMMIT;
