@@ -28,7 +28,7 @@ public class Auth {
     public static boolean isTeacher(HttpServletRequest req, HttpServletResponse resp) {
         return req.getSession().getAttribute("auth.type") != null && req.getSession().getAttribute("auth.type").equals(2);
     }
-    
+
     public static boolean isStudent(HttpServletRequest req, HttpServletResponse resp) {
         return req.getSession().getAttribute("auth.type") != null && req.getSession().getAttribute("auth.type").equals(1);
     }
@@ -41,6 +41,7 @@ public class Auth {
             req.getSession().setAttribute("auth.name", user.getName());
             req.getSession().setAttribute("auth.username", user.getUsername());
             req.getSession().setAttribute("auth.type", user.getType());
+            DataAccess.executeUpdate("UPDATE users SET users.last_login = CURRENT_TIMESTAMP() WHERE users.id="+user.getId());
             resp.sendRedirect("/");
         } else {
             req.getSession().invalidate();

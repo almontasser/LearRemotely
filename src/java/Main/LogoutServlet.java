@@ -5,6 +5,7 @@
  */
 package Main;
 
+import Main.Helpers.DataAccess;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -22,6 +23,7 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        DataAccess.executeUpdate("UPDATE users SET users.last_logout = CURRENT_TIMESTAMP() WHERE users.id="+req.getSession().getAttribute("auth.id"));
         req.getSession().invalidate();
         resp.sendRedirect("/login");
     }
