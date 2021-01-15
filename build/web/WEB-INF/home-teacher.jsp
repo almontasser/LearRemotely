@@ -17,7 +17,9 @@
                     <h6 class="card-subtitle mb-2 text-muted">
                         <%= subject.getTeacher() == null ? "< لا يوجد أستاذ >" : subject.getTeacher() %>
                     </h6>
-                    <a href="/subject?id=<%= subject.getId()%>" class="card-link">الدخول للمقرر</a>
+                </div>
+                <div class="card-footer">
+                    <a type="button" class="btn btn-outline-primary btn-sm" href="/subject?id=<%= subject.getId()%>">الدخول للمقرر</a>
                 </div>
             </div>
         </div>

@@ -49,6 +49,13 @@
                                     <h6 class="mb-0"><%= post.getUser().getName()%></h6>
                                     <small class="text-muted"><%= post.getDate()%></small>
                                 </div>
+                                <% if (request.getAttribute("isTeacher").equals(true) || request.getAttribute("isAdmin").equals(true) || post.getUserId().equals(session.getAttribute("auth.id"))) { %>
+                                <div style="margin-right: auto;">
+                                    <form action="/delete-post?id=<%= post.getId() %>" method="POST">
+                                        <button type="submit" class="btn btn-danger btn-sm">حذف</button>
+                                    </form>
+                                </div>
+                                <% } %>
                             </div>
                             <div class="mt-2">
                                 <%= post.getText()%>
@@ -88,6 +95,13 @@
                                         </div>
                                         <div><%= comment.getText()%> </div>
                                     </div>
+                                    <% if (request.getAttribute("isTeacher").equals(true) || request.getAttribute("isAdmin").equals(true) || comment.getUserId().equals(session.getAttribute("auth.id"))) { %>
+                                    <div style="margin-right: auto;">
+                                        <form action="/delete-comment?id=<%= comment.getId() %>" method="POST">
+                                            <button type="submit" class="btn btn-outline-danger btn-sm">حذف</button>
+                                        </form>
+                                    </div>
+                                    <% } %>
                                 </div>
                                 <% } %>
                             </div>

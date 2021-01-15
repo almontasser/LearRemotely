@@ -383,4 +383,25 @@ public class DataAccess {
             }
         return result;
     }
+    
+    public static Comment getCommentById(Integer commentId) {
+        Comment result = null;
+        try {
+                ResultSet r = executeQuery("SELECT * from comments WHERE id=" + commentId);
+                if (r.next()) {
+                    result = new Comment();
+                    result.setId(r.getInt("id"));
+                    result.setPostId(r.getInt("post_id"));
+                    result.setUserId(r.getInt("user_id"));
+                    result.setDate(r.getTimestamp("date"));
+                    result.setText(r.getString("text"));
+                }
+                closeResultSet(r);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return result;
+    }
 }
