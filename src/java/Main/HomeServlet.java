@@ -42,6 +42,10 @@ public class HomeServlet extends HttpServlet {
             List<Subject> subjects = DataAccess.getTeacherSubjects((Integer) req.getSession().getAttribute("auth.id"));
             req.setAttribute("subjects", subjects);
             Template.Include(req, resp, "WEB-INF/home-teacher.jsp");
+        } else if (Auth.isAdmin(req, resp)) {
+            List<Subject> subjects = DataAccess.getAllSubjects();
+            req.setAttribute("subjects", subjects);
+            Template.Include(req, resp, "WEB-INF/home-admin.jsp");
         }
         Template.Footer(req, resp);
     }
