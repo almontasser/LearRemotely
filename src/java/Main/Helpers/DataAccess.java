@@ -5,6 +5,7 @@
  */
 package Main.Helpers;
 
+import Main.Models.SubjectStudentRelation;
 import Main.Models.Comment;
 import Main.Models.Post;
 import Main.Models.Subject;

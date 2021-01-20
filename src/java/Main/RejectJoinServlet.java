@@ -7,7 +7,7 @@ package Main;
 
 import Main.Helpers.Auth;
 import Main.Helpers.DataAccess;
-import Main.Helpers.SubjectStudentRelation;
+import Main.Models.SubjectStudentRelation;
 import Main.Models.Subject;
 import java.io.IOException;
 import java.io.PrintWriter;
